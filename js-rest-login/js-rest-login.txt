@@ -1,0 +1,44 @@
+You should wrap your client side js code inside an IIFE
+npm run build command failed because the @babel/core and @babel/preset-env packages were missing from the dependencies section of package.json file
+You should check for missing sid values and invalid sid value for all item related operation i.e. adding new item, deleting an item or changing the score of an item
+When your application is loaded for the first time, it should not display error message "Please log in!" on login screen.
+In service call to delete item, increase ranking or decrease ranking, there is no need to pass index in request body as you are already passing the index in the path.
+Checking for duplicate item name, deleting an item and updating the ranking are functionalities related to todo list and should have been done in userlist.js file instead of server.js to maintain seperation of concerns.
+The todo.js file is responsible for many functionalities and deals with other things/concerns. To maintain separation of concerns, separate files should have been created for different concerns, each being responsible for its own concern. For example, you could have created a seperate file for HTML manipulation/changing functions.
+You could have directly accessed the user's todo list using userInfo[username].todos instead of accessing if in following way:
+const username = Object.keys(userInfo);
+todos = userInfo[username[0]].todos;
+Every 5 seconds (roughly) the page will fetch an updated list of items from the server and display any changes - polling should start only after the user logs in and should stop when user logs out.
+
+Server.js:
+47 const sid = sessionsModule.createSession(username, itemObj);
+48    res.cookie('sid', sid);
+49    res.status(200).json(sessionsModule.sessions[sid]);
+Creating session, setting cookie and sending response are common in either of the cases (username exist or not), you could have written this common part of code outside the if else loop
+
+125 if (req.body.ranking === 1){
+you should check for invalid value of ranking - ranking should not be less than 1 or greater than 5
+
+128 else {
+129    todosArr[index].ranking--;
+130  }
+131  res.status(200).json(sessionsModule.sessions[sid]);
+The service call to update the ranking should not return the full state, only the single updated item.
+
+Services.js:
+50 export const performAdd = function( name ) {
+51  return fetch(`/item/${name}`, {
+You should not pass item name in the path, it should be passed in the request body (which you are doing)
+On entering one or more whitespace in the text field and then clicking on "Add" button displays undefined error on the webapage and the server responds with error http://localhost:3000/item/ 404 (Not Found). Since the item name is empty, POST method is called with path "/item/" and as there is no POST method this path, server responds with 404 error
+
+128 export const performRefresh = function() {
+performRefresh() is same as the checkLoginStatus() function
+
+todo.js:
+83 document.querySelector('#todo-app .login input').value = "";
+84      performLogout()
+85      .then( info => {
+86        showLogin();
+You should reset the value of curSort once the user logs out.
+Currently if user A sorts the list in descending order, the curSort value is set to 'desc'. Now if user A logs out and user B logs in, the item list id automatically sorted in descending order for user B. This is because the curSort value is still set to 'desc'.
+

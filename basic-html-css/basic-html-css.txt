@@ -1,0 +1,13 @@
+Each student name and cat name should be linked to details.html with an id=somenumber as a query paramater and not as a fragment (#). A query parameter is part of the URL that appears to the right of the '?'. For example, q=html is a query parameter in the URL "https://www.google.com/search?q=html". Thus, the relative path "details.html?id=1" is the required way to link a student/cat name to details.html with an id=somenumber as a query param.
+The border was required only for the students/cats list, not for the entire html page
+The action attribute of a form is the URL to call when the form is submitted. There is no need to explicitly specify '?favorite=' in the action URL. Submitting the form via the button will automatically append input element and it's corresponding value to URL.
+Also, the name of input box on details.html page should be 'favorite', so that submitting the form via the button will automatically append 'favorite=WHATEVERTHEYTYPED' to the URL.
+Could have kept little space between two forms on details.html page for visual clarity.
+
+Notes:
+I want to clarify a few things about about the assignment that can be confusing:
+The request is to use links and forms in HTML for the browser to follow urls that include query parameters.
+Because we're serving static files and not dynamic files, these query params will not actually change the page you see.  e.g. details.html?favorite=cat will give you the same HTML page as details.html?favorite=not+a+dog
+BUT the webserver we're using, serve, has a weird quirk where it will not just return the html file when you pass query params that make no difference, it will instead redirect to a url for the html file WITHOUT any query params.   (e.g. requesting details.html?favorite=cat will redirect you to details.html)
+That's fine for this assignment, since the test is that were able to make the HTML link/form correct in the first place.  To validate that you've done so, you can see the network requests in the browser - you'll see the request with the query params return a 302 status code, and then you'll see a second request for the url without the query params (which is where the 302 response redirected you to)
+Let me know if any of this is unclear.  It's unfortunate that serve has the redirect - I was trying to spare you any confusion with having to run/install an additional webserver, but clearly this one is hurting as much as it helps.

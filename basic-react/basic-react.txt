@@ -1,0 +1,10 @@
+You should not put too much in one component (Input.jsx). To have good separation of concerns, components should be broken down into multiple components, each component being responsible for one specific purpose.
+So, you should have a separate component for handling user input (input box and button). Displaying the output message to the user can either be done in App.jsx or you can create separate component as well.
+
+input.jsx:
+7 const [ tempWord, setTempWord ] = useState(''); 
+Use good and meaningful names for state values, you could have used something like 'guessWord'
+
+judgeGuess.js:
+Avoid using short forms like 'str' and 'Arr'
+You should use 'const' if the value/reference does not needs to be re-assigned: match (line #36), guessedWordArr (line #20) and secretWordArr (line #19)

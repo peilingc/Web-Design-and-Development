@@ -1,0 +1,67 @@
+Currently, App.jsx is responsible for too many functionalities - maitaining user and message list. updating message list when a new message is sent, handling user login and logout, etc. You should not put too much in one component. To have good separation of concerns, components should be broken down into multiple components, each component being responsible for one specific purpose.
+So, you should have created a separate component for chat room that maintains user, message list and related functionality. App.jsx will only be responsible for maintaing user's state.
+The chat.js file should be stored on server-side (not client-side).
+You should not create state variable for status and <div> element to display error/status message in each and every component. Since, it is acoomon functionality, you should have created both state variable and html element in App.jsx, and just pass 'setError' (state variable function) as a prop to required child component(s).
+If the user is on chat screen and a fetch call fails with an error (session related error or network error), entire page goes blank.
+Elements should be well aligned and the 'Logout' button should be easily seen and available to the user. Currenlty, the 'Logout' button is placed at the very end of the page, after the list of users, messages, and new message input box and send button. If there are too many messages, then user will have to scroll through the entire page to locate the logout button.
+Could have added all .jsx files in a separate directory.
+
+server.js:
+73 const sender = session.details[sid].username;
+74  const text = req.body.text;
+75  chat.addMessage({sender,text});
+You should check for empty message and whitespace characters.
+Currently " " (only whitespaces) and "" (empty text) are considered as a valid message
+
+82 app.put('/api/chat', (req, res) => {
+PUT method is used to replace or update server side data with the information sent in the request body. Here you are not performing any update operation, you just want retrieve list of users and messages, so you should uset GET method instead of PUT
+
+Session.js:
+3 const users = {};
+You do not require users object, only session object is enough for implementing required functionality.
+You are strong username in this object which can be retieved from the 'sessions' objects
+
+7 if(!username) {
+You are already checking for empty username in create() function.
+
+24 if(username==="dog"){
+The check for username equal to dog should be case insensitive.
+It is possible to login with username as "DOG"
+
+Chat.js:
+1 const currentUsers = ['sample'];
+You already have a users object in session.js file which stores list of users. Here, you are creating another array containing same information, why store same information at multiple places?
+Also, there is no need to store list of users separately as you can easily obtain this list from 'sessions' object (session.js)
+
+Login.jsx:
+erromsgs
+Since you need error messages object in multiple component and most of the messages are common, you should have declared 'errMsgs' object in a separate .js file and import it in the the required component.
+Also, code that is not related to JSX should be written in non-JSX file and imported in the required JSX file.
+Avoid using short forms for variable names, you should have used 'errorMessages' instead of 'errMsgs'
+Kindly provide meaningful error message. 'Invalid username' does not clearly state the issue.
+Something like - Invalid Username: Username should only contain letters, numbers and underscore
+
+18 const onChange = (e) => {
+Use good and meaningful function name, could have used something like onUserInput
+
+28 setIsPending(false);
+29      onLogin({ username });
+30      setUsers(userinfo.currentUsers);
+31      setMessages(userinfo.messages); 
+Login component should be responsible only for handling login functionality - handling user action and setting the userState as logged in, etc. This component have nothing to do with user list and message list, so you should not set user list and message list in Login component. This will ensure separation of concern i.e. each component being responsible for a specific purpose.
+
+Services.js:
+61 export const fetchNewList = () => {
+Use good and meaningful function name
+
+showMessages.css:
+File names should be lower kebab-case except for JSX files which should be MixedCase
+
+Showinput.jsx:
+13 const onChange = (e) => {
+Use good and meaningful function name, could have used something like onUserInput
+
+app.css:
+Avoid using fixed width and height in CSS, let the browser resize the items automatically.
+Here you have set fixed height of 850px with background color blue. Approximately only 10 messages can fit in 850 px, all other messages are displayed outside this fixed area. Tthe font colour of message is set to white white so that it can be seen on blue background.
+Now the problem is only initial 10 messages that fits in 850 px height are visible since it has blue background, rest all messages are not visible because both font and background colour is white. Also, the input box to enter new message is not visible for the same reason.

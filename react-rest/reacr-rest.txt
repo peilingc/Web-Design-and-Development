@@ -1,0 +1,35 @@
+Missing requirement: Once the service called by pressing "Load Facts" button has loaded, the "0 facts loaded" message should be updated to show the number of facts loaded ("72 facts loaded").
+The cat-facts-list.json file (JSON file holding facts) should be stored on your server, not client.
+You should display meaningful error messages if there are problems reaching the server. Currently the a blank page is shown with following error in brower's console:
+GET http://localhost:5000/api/catList net::ERR_CONNECTION_REFUSED
+Fetch failed loading: GET "http://localhost:5000/api/catList".
+Error: Minified React error #31; visit https://reactjs.org/docs/error-decoder.html?invariant=31&args[]=object%20with%20keys%20%7Berror%7D 
+Error: Minified React error #31; visit https://reactjs.org/docs/error-decoder.html?invariant=31&args[]=object%20with%20keys%20%7Berror%7D 
+The visual appearance of the dropdown for "Facts per page" is confusing. Since the dropdown looks like a button, it does not clearly indicate the required interactivity. Users might find it difficult to guess that the number of facts per page can be changed using the dropdown.
+Use good and meaningful variable names - 'count' and 'tempSize' are not the correct names for variable.
+
+App.jsx:
+Class should have meaningful names i.e one should be able to identify the purpose of the class by class name. 'select', 'show' and 'load' are not the correct names for a class as it either states the intended visual effect or does not convey the purpose.
+
+pages.jsx:
+11let tempSize = size;
+12    let disablePrevious = !start;
+13    let end = start+tempSize;
+14    let disableNext = !(end < 72);
+It's a good practice to avoid using hard coded values, you could have used facts.length
+What if total number of facts returned by server changes - facts.length would take care of this scenario and you would not requihave to manually make any change to the code
+You should use 'const' if the value/reference does not needs to be re-assigned. All above 4 variables should have been declared using const
+tempSize variable is not required, you could have avoided this variable and directly used 'size' variable instead
+
+30  if ((start - tempSize) < 0 ){
+31            newStart = 0;
+32        }
+33        else ( newStart = start - tempSize);
+Always use curly braces'{}', even if it is one line.
+Also, maintain consistent spacing and follow proper indentation.
+
+catFacts.jsx:
+9 const count = Children.count(formattedFacts);
+Use of 'Children' is not required as it could have been easily done by:
+const count = start + tempSize > facts.length ? facts.length : start + tempSize
+Also, using 'React.Childern' utilities make code harder to maintain

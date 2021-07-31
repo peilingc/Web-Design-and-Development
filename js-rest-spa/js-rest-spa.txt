@@ -1,0 +1,43 @@
+Your code must be runnable via: npm install, node server.js and going to http://localhost:3000/. package.json file was missing.
+You should only pass itemId in the path, rest all information (quantity, change in quantity, item name, etc.) should be passed in the request body as JSON. Currently, you are passing item name in the path for add operation.
+You should keep your data in the state object on the client and update this object whenever the server responds with updated/modified data
+Missing checks on server:
+valid item name - to avoid injection attacks, you should check if the item name contains only accepted characters (alphabets, space, numbers, etc)
+missing 'change' value (PUT method) - if the change value is missing, server should respond with error 'missing-change-in-quantity-value''. Currently, if change value is missing in the body request, then as per the code, else loop is executed which decreases the item quantity by 1
+valid value of quantity - quantity should not be less than 0
+invalid Item ID - if an update or delete operation is requested for an item ID that does not exists
+For updating quantity value or deleting an item at server side, there is no need to loop through entire object using Object.keys() function. Since you have the item ID, you can directly access the required element using the item ID - item[id].quantity += 1 or delete item[id]
+The item object should be stored on server, not client side.
+Since the product list object is maintained in inventory.js file, all inventiory/product related functionalities (adding item, modifying quantity, deleting item, etc) should be performed in inventory.js file, not server.js. This will ensure separation of concerns - each file being responsible for its own concern.
+The CSS should be attractive and there should be enough space between items.
+Could have added heading to the items list to indicate purpose of each column.
+
+
+Names.js:
+10 const errMsgs = { 
+11     'duplicate': 'That item already exists',
+12     'network-error': 'There was a problem connecting to the network, try again',
+Error message missing for error code 'missing-item'
+
+37 return `
+38         <li>
+39            <span class="name" data-index="${key}">${names[key].name}</span>
+40            <span class="delete" data-index="${key}">X</span>
+To delete an item, "X" button (not span) should be provided besides the item name
+
+82 if(name) {
+83   fetch(`/item/${name}`, {
+84     method: 'POST',
+85 })
+On entering one or more whitespace in the text field and then clicking on "ADD" button displays undefined error on the webapage and the server responds with error http://localhost:3000/items/ 404 (Not Found).
+Since the item name is empty, POST method is called with path "/items/" and as there is no POST method this path, server responds with 404 error
+
+Server.js:
+70 app.put('/item/:id', express.json(), (req, res) => {
+You should use PATCH method for partial update
+PUT method - used if the request body contains the entire item object to be updated i.e. you are sending all the information of the item object you are trying to update
+PATCH method - used if the request body contain only the specific changes to the item i.e. you are sending only the partial information describing what/how the item needs to be changed
+
+15 app.get('/item/:name', (req, res) => {
+Additional GET method - not used anywhere in your application
+

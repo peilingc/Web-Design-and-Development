@@ -1,0 +1,45 @@
+#todo-app .delete { 
+    font-weight: lighter;
+    background: lightgray;
+    border: 1px solid black;
+    cursor: pointer;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+  }
+
+#todo-app .increase {
+    margin-left: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: rgb(200, 241, 200);
+}
+
+#todo-app .decrease {
+    margin-left: 70px;
+    font-weight: bolder;
+    cursor: pointer;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: rgb(248, 166, 166);
+}
+
+li:hover {
+    background: rgb(197, 196, 196);
+}
+
+ul {
+    display:table; 
+    width:50%; 
+    padding:0;
+}
+
+li {
+    display:table-row;
+}
+
+li span {
+    display:table-cell; 
+    text-align:left;
+}
+

@@ -1,0 +1,62 @@
+.app-input {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.message {
+    color: #ff6b00;
+    margin-top: 50px; 
+}
+
+input {
+    border: 2px solid white;
+    border-radius: 8px;
+    height: 20px;
+    width: 50px;
+    font-size:medium;
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+    color: #F88D1E;
+    background-image: url('search.png');
+    background-position: left;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    transition: width 0.4s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    width: 100px;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 100px;
+    height: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 9px #999;
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    background-color: #fdd394; 
+    color: white;
+}
+
+button:active {
+    background-color: #FFDFAE;
+    box-shadow: 0 5px #666;
+    transform: translateY(7px);
+}
+

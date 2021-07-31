@@ -1,0 +1,12 @@
+.error-header{
+	color: red;
+	font-weight: bold;
+}
+
+.student-cat {
+ 	display: flex;
+}
+
+button {
+	display: block;
+}

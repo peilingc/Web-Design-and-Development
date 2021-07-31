@@ -1,0 +1,17 @@
+body{
+	border: 5px solid black;
+	font-family: sans-serif;
+}
+
+ul{
+	list-style-type: none;
+}
+
+li:nth-child(odd) {
+	background: #FAEBD7;
+}
+
+li:nth-child(even) {
+	background: #A9A9A9;
+}
+

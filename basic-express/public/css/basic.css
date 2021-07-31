@@ -1,0 +1,31 @@
+.users{
+  list-style-type: none;
+  color: blue;
+  font-weight: bold;
+}
+
+button {
+  display: inline-block;
+}
+  
+body{
+  border: 3px solid black;
+  font-family: sans-serif;
+}
+
+.message-sender{
+  color: grey;
+}
+
+.outgoing{
+  padding: 5px 5px 5px 45px;
+}
+
+li{
+  list-style-type: none;
+}
+
+.message{
+  padding: 5px 10px 10px 5px;
+  border: 1px solid grey;
+}

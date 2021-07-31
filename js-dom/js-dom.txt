@@ -1,0 +1,17 @@
+Todo.js:
+2 (function IIFE(){
+3    const todos = [
+The app displays list of items in a store inventory, not a todo list.
+The name of array should have been something related to store inventory like inventoryList, items, itemList, storeInventory or inventories
+
+14 const listEl = document.querySelector('#todo-app .todos');
+15 const inputEl = document.querySelector('#todo-app input');
+Variable names should be meaningful, for example - you could have used itemListEl and itemNameInputEl
+
+49 let index =0;
+50 todos.forEach( e => {
+51   if (e.quantity <= 0){
+52     let decreaseBtnEl = document.querySelector(`button[data-index="${index}"]`);
+You should use 'const' if the value/reference does not needs to be re-assigned.
+Here, the type of 'decreaseEl' is object. You can change the content of the object that is declared with const variable, but you cannot assign a new object to a const variable.
+Variable names should be meaningful, for example - you could have used 'todo' instead of e

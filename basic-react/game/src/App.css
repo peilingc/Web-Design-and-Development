@@ -1,0 +1,91 @@
+.app {
+  text-align: center;
+  background-color: #F9B456;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.app-logo {
+  height: 10vmin;
+  pointer-events: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: app-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-header {
+  background-color: #FDF9E1;
+  font-weight: bolder;
+  font-size: xx-large;
+  height: 18vmin;
+  color: #F88D1E;
+  animation: myanimation 9s infinite;
+}
+
+@keyframes myanimation {
+  0% {background-color: #FDF9E1;}
+  25%{background-color: #FFDFAE;}
+  50%{background-color: #CFF1CA;}
+  75%{background-color: #d3e8f6;}
+  100% {background-color: #FDF9E1;}
+}
+
+.app-body {
+  height: 93.5vmin;
+}
+
+.text-box {
+  margin-top: 20px;
+  color: white;
+  font-size: x-large;
+  font-weight: bold;
+  font-family:'Courier New', Courier, monospace;
+  height: 50px;
+}
+
+span {
+  display: inline-block;
+  margin-right: 10px;
+  animation: mover 1s linear infinite;
+}
+
+@keyframes mover {
+  0% {
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+  }
+}
+
+span:nth-child(1) {
+  animation-delay: 0.2s;
+}
+span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+span:nth-child(5) {
+  animation-delay: 1s;
+}

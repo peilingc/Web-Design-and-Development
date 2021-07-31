@@ -1,0 +1,62 @@
+.app {
+  font-family: 'Courier New', Courier, monospace;
+  color: hsl(0, 0%, 100%);
+  background-color: #04467c;
+  height: 850px;
+}
+
+h1 {
+  text-align: center;
+  background-color: white;
+  color: #04467c;
+}
+
+button {
+  margin-left: 10px;
+  height: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 1px #999;
+  transition-duration: 0.5s;
+}
+
+button:hover {
+  background-color: #f7b95c; 
+  color: white;
+}
+
+button:active {
+  background-color: #f7b95c;
+  box-shadow: 0 1px #666;
+  transform: translateY(7px);
+}
+
+label {
+  font-size: large;
+  font-weight: bold;
+}
+
+.username-field {
+  border: 2px solid white;
+  border-radius: 8px;
+  height: 20px;
+  width: 150px;
+  font-size:medium;
+  font-weight: bold;
+  font-family:'Courier New', Courier, monospace;
+  color: #F88D1E;
+  outline: none;
+}
+
+.status {
+  color:red;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.logout {
+  margin-top: 100px;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="todo.css"/>
+  </head>
+  <body>
+    <div id="todo-app">
+      <div class="login hidden">
+        <label>Username: <input type="text"></label>
+        <button type="button">Login</button>
+        <div class="login-status"></div>
+      </div>
+      <div class="logged-in hidden">
+        <div class="sort">
+          Ranking:
+          <button class="asc-sort" type="button">From low to high</button>
+          <button class="desc-sort" type="button">From high to low</button>
+        </div>
+        <ul class="todos"></ul>
+        Add Item:<input class="add-name" placeholder="Type Item Here">
+        <button class="add-button" type="button">Add</button>
+        <button class="logout-button" type="button">Logout</button>
+      </div>
+      <div class="status"></div>
+    </div>
+    <script src="todo.js"></script>
+  </body>
+</html>
